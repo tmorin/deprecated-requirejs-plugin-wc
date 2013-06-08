@@ -1,0 +1,8 @@
+{
+  "name": "requirejs-plugin-wc",
+  "description": "Web components loading support for requirejs",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-contrib-connect": "~0.3.0"
+  }
+}
