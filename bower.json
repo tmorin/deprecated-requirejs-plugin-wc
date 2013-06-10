@@ -2,14 +2,15 @@
   "name": "requirejs-plugin-wc",
   "version": "0.0.1",
   "main": "wc.js",
-  "ignore": [
-  ],
+  "ignore": [],
   "dependencies": {
     "requirejs": "~2.1.6",
     "requirejs-text": "~2.0.7"
   },
   "devDependencies": {
     "polymer": "stable",
-    "x-tag-core": "latest"
+    "x-tag-core": "latest",
+    "mocha": "~1.9.0",
+    "chai": "~1.6.1"
   }
 }

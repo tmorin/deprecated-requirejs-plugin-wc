@@ -15,7 +15,7 @@ requirejs.config({
     },
     config: {
         ws: {
-            platformModule: 'wcp',
+            standardModule: 'wcp',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
             debug: true
@@ -39,8 +39,9 @@ require([
 
     // declarative way
     'wc!tags/poly-html1.html!dec!polymer',
-    'wc!tags/std-html1.html!dec'
-], function (stdJs1) {
+    'wc!tags/std-html1.html!dec',
+    'wc!tags/std-html2.html!dec'
+], function () {
     Array.prototype.forEach.call(arguments, function (Component) {
         if (Component) {
             var div = document.createElement('div');
@@ -50,9 +51,14 @@ require([
         }
     });
 
-    var div = document.createElement('div');
-    var cp = document.createElement('std-html1');
-    div.appendChild(cp);
-    document.body.appendChild(div);
+    var div1 = document.createElement('div');
+    var cp1 = document.createElement('std-html1');
+    div1.appendChild(cp1);
+    document.body.appendChild(div1);
+
+    var div2 = document.createElement('div');
+    var cp2 = document.createElement('std-html2');
+    div2.appendChild(cp2);
+    document.body.appendChild(div2);
 
 });

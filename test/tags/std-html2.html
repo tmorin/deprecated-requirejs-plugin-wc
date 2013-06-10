@@ -1,0 +1,24 @@
+<link rel="import" href="std-html3.html">
+<element name="std-html2">
+    <section>
+        I'm std-html2!
+        <std-html3></std-html3>
+    </section>
+    <footer>nothing to see here</footer>
+    <script>
+            console.log('outside', this);
+        // When <element> is in document, might run in wrong context.
+        // Only do work when this == <element>.
+        if (this !== window) {
+            console.log('inside', this);
+            var section = this.querySelector('section');
+            this.register({
+                prototype: {
+                    readyCallback: function () {
+                        this.innerHTML = section.innerHTML;
+                    }
+                }
+            });
+        }
+    </script>
+</element>
