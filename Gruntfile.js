@@ -12,6 +12,16 @@ module.exports = function (grunt) {
             }
         },
 
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: "./",
+                    name: "wc",
+                    out: "wc.min.js"
+                }
+            }
+        },
+
         jslint: { // configure the task
             files: [ // some example files
                 'Gruntfile.js',
@@ -58,6 +68,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-jslint');
 
 };
