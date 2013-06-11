@@ -17,7 +17,7 @@ define(['module'], function (module) {
      * @param {object} config the call's config
      * @returns {boolean} true if the debug mode is enabled else false
      */
-    function isDebugEnabled (config) {
+    function isDebugEnabled(config) {
         if (config.config && config.config.ws && config.config.ws) {
             return config.config.ws.debug;
         }
@@ -61,23 +61,11 @@ define(['module'], function (module) {
     }
 
     /**
-     * Get the default mode from the requirejs config
-     * @param {object} config the call's config
-     * @returns {string} the default mode
-     */
-    function getDefaultMode (config) {
-        if (config.config && config.config.ws && config.config.ws) {
-            return config.config.ws.defaultMode;
-        }
-        return masterConfig.ws && masterConfig.ws.defaultMode;
-    }
-
-    /**
      * Get the default platform from the requirejs config
      * @param {object} config the call's config
      * @returns {string} the default platform
      */
-    function getDefaultPlatform (config) {
+    function getDefaultPlatform(config) {
         if (config.config && config.config.ws && config.config.ws) {
             return config.config.ws.defaultPlatform;
         }
@@ -90,16 +78,18 @@ define(['module'], function (module) {
      * @param {object} config the call's config
      * @returns {string} the platform or null if not detected
      */
-    function getCurrentPlatform (resourceName, config) {
-        var isPolymer = polymerRegEx.test(name),
-            isXTag = xtagRegEx.test(name),
-            defaultPlatform = getDefaultPlatform(config) ;
+    function getCurrentPlatform(resourceName, config) {
+        var isPolymer = polymerRegEx.test(resourceName),
+            isXTag = xtagRegEx.test(resourceName),
+            defaultPlatform = getDefaultPlatform(config);
 
         if (isPolymer) {
             return 'polymer';
-        } else if (isXTag) {
+        }
+        if (isXTag) {
             return 'xtag';
-        } else if (defaultPlatform) {
+        }
+        if (defaultPlatform) {
             return defaultPlatform;
         }
         return 'standard';
@@ -154,31 +144,22 @@ define(['module'], function (module) {
         }
 
         if (moduleName) {
-            parentRequire([moduleName], function (module) {
+            parentRequire([moduleName], function () {
                 // TODO: if loaded for the first time, be sure it's loaded completely
                 var tags = Array.prototype.map.call(elementNodes, function (node) {
                     var div = document.createElement('div'),
                         result,
                         error;
                     div.appendChild(node);
-                    if (isPolymer) {
-                        if (window.CustomElements) {
-                            window.CustomElements.parser.parse(div);
-                            result = window[node.getAttribute('constructor')];
-                        } else {
-                            error = new Error('the polymer module has been loaded but CustomElements is not available');
-                            onLoad.error(error);
-                            throw error;
-                        }
+                    if (window.CustomElements) {
+                        window.CustomElements.parser.parse(div);
+                        result = window[node.getAttribute('constructor')];
                     } else {
-                        if (window.CustomElements) {
-                            window.CustomElements.parser.parse(div);
-                            result = window[node.getAttribute('constructor')];
-                        } else {
-                            error = new Error('the standard module has been loaded but CustomElements is not available');
-                            onLoad.error(error);
-                            throw error;
-                        }
+                        error = new Error('the '
+                            + moduleName
+                            + ' module has been loaded but CustomElements is not available');
+                        onLoad.error(error);
+                        throw error;
                     }
                     return result;
                 });
@@ -192,7 +173,7 @@ define(['module'], function (module) {
                 onLoad.error(new Error('unable to load the module [' + module + ']', err));
             });
         } else {
-            onLoad.error(new Error('polymerModule and/or xtagModule and/or platformModule not configured'));
+            onLoad.error(new Error('polymerModule and/or platformModule not configured'));
         }
     }
 
@@ -216,7 +197,7 @@ define(['module'], function (module) {
                 importNodes,
                 importedModules,
                 baseImportUrl = /.*\//.exec(moduleName) || '',
-                currentPlatform = getCurrentPlatform (name, config);
+                currentPlatform = getCurrentPlatform(name, config);
 
             div.innerHTML = wcStr;
             elementNodes = div.querySelectorAll('element');
@@ -224,7 +205,11 @@ define(['module'], function (module) {
 
             if (importNodes.length > 0) {
                 importedModules = Array.prototype.map.call(importNodes, function (node) {
-                    return 'wc!' + baseImportUrl + node.getAttribute('href') + '!dec' + '!' + currentPlatform;
+                    return 'wc!'
+                        + baseImportUrl
+                        + node.getAttribute('href')
+                        + '!dec'
+                        + '!' + currentPlatform;
                 });
 
                 if (isDebugEnabled(config)) {
@@ -263,12 +248,17 @@ define(['module'], function (module) {
             standardModule = getStandardModule(config);
             if (standardModule) {
                 parentRequire([standardModule], function () {
+
+                    if (isDebugEnabled(config)) {
+                        console.log('wc', 'standard platform module', standardModule, 'loaded');
+                    }
+
                     // TODO: if loaded for the first time, be sure it's loaded completely
                     if (document.register) {
                         tag = document.register(tagName, wcPrototype);
                         onLoad(tag);
                     } else {
-                        onLoad.error(new Error('the standard platform has been loaded, but document.register is undefined'));
+                        onLoad.error(new Error('no document.register'));
                     }
                 }, function (err) {
                     onLoad.error(new Error('unable to load the standard platform module', err));
@@ -295,7 +285,7 @@ define(['module'], function (module) {
                 // TODO: if loaded for the first time, be sure it's loaded completely
                 if (isDebugEnabled(config)) {
                     console.log('wc', 'loaded xtag', xtag);
-                    console.log('wc', 'wc to register', tagName, wcPrototype);
+                    console.log('wc', 'register', tagName, wcPrototype);
                 }
                 tag = xtag.register(tagName, wcPrototype);
                 onLoad(tag);
@@ -304,35 +294,6 @@ define(['module'], function (module) {
             });
         } else {
             onLoad.error(new Error('xTagModule not configured'));
-        }
-    }
-
-    /**
-     * Register a polymer web component, using Polymer.register()
-     * @param {string} tagName the name of the tag's to register
-     * @param {object} wcPrototype the web component's prototype to register
-     * @param {function} parentRequire the parent's require instance
-     * @param {function} onLoad callback to handle the resource loading lifecyle (success, faillure)
-     * @param {object} config the call's config
-     * @deprecated  this method is may be not very usefull because Polymer.register seems not designed for the imperative way
-     */
-    function registerPolymerComponent(tagName, wcPrototype, parentRequire, onLoad, config) {
-        var tag,
-            polymerModule = getPolymerModule(config);
-        if (polymerModule) {
-            parentRequire([polymerModule], function (polymer) {
-                // TODO: if loaded for the first time, be sure it's loaded completely
-                if (isDebugEnabled(config)) {
-                    console.log('wc', 'loaded polymer', polymer);
-                    console.log('wc', 'wc to register', tagName, wcPrototype);
-                }
-                tag = Polymer.register(tagName, wcPrototype);
-                onLoad(tag);
-            }, function (err) {
-                onLoad.error(new Error('unable to load the polymer module', err));
-            });
-        } else {
-            onLoad.error(new Error('polymerModule not configured'));
         }
     }
 
@@ -405,7 +366,7 @@ define(['module'], function (module) {
             }
 
         }
-    }
+    };
 
     return wc;
 });
