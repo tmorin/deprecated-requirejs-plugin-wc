@@ -6,12 +6,11 @@ requirejs.config({
         text: '../components/requirejs-text/text',
         wc: '../wc',
         polymer: '../components/polymer/polymer.min',
-        xtag: '../components/x-tag-core/src/core',
-        wcp: '../components/x-tag-core/lib/web-components-polyfill'
+        xtag: '../components/x-tag-core/src/core'
     },
     shim: {
-        polymer: { exports: 'Polymer', deps: ['wcp'] },
-        xtag: { exports: 'xtag', deps: ['wcp'] }
+        polymer: { exports: 'Polymer' },
+        xtag: { exports: 'xtag', deps: ['polymer'] }
     },
     config: {
         ws: {
