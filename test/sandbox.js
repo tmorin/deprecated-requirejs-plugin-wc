@@ -10,12 +10,12 @@ requirejs.config({
         wcp: '../components/x-tag-core/lib/web-components-polyfill'
     },
     shim: {
-        polymer: { exports: 'Polymer' },
-        xtag: { exports: 'xtag' }
+        polymer: { exports: 'Polymer', deps: ['wcp'] },
+        xtag: { exports: 'xtag', deps: ['wcp'] }
     },
     config: {
         ws: {
-            standardModule: 'wcp',
+            standardModule: 'polymer',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
             debug: true

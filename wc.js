@@ -144,8 +144,9 @@ define(['module'], function (module) {
         }
 
         if (moduleName) {
-            parentRequire([moduleName], function () {
+            parentRequire([moduleName], function (mod) {
                 // TODO: if loaded for the first time, be sure it's loaded completely
+
                 var tags = Array.prototype.map.call(elementNodes, function (node) {
                     var div = document.createElement('div'),
                         result,
