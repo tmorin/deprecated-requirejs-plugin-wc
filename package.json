@@ -2,6 +2,9 @@
   "name": "requirejs-plugin-wc",
   "description": "Web components loading support for requirejs",
   "version": "0.0.1",
+  "scripts": {
+   "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-connect": "~0.3.0",
