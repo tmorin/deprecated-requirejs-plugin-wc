@@ -12,9 +12,13 @@ frameworks = ['mocha', 'requirejs'];
 
 // list of files / patterns to load in the browser
 files = [
-    {pattern: 'components/**/*.js', included: false},
+    {pattern: 'components/polymer/polymer.min.js', included: false},
+    {pattern: 'components/requirejs-text/text.js', included: false},
+    {pattern: 'components/x-tag-core/src/core.js', included: false},
+    {pattern: 'node_modules/chai/chai.js', included: false},
     {pattern: 'wc.js', included: false},
     {pattern: 'test/**/*Spec.js', included: false},
+    {pattern: 'test/tags/*', included: false},
     'test/main-karma.js'
 ];
 
@@ -24,11 +28,9 @@ exclude = [
   
 ];
 
-
 // test results reporter to use
 // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-reporters = ['progress'];
-
+reporters: ['growl'];
 
 // web server port
 port = 9876;
@@ -76,5 +78,5 @@ plugins = [
   'karma-mocha',
   'karma-requirejs',
   'karma-firefox-launcher',
-  'karma-chrome-launcher'
+  'karma-phantomjs-launcher'
 ];

@@ -9,14 +9,11 @@ requirejs.config({
         wc: 'wc',
         polymer: 'components/polymer/polymer.min',
         xtag: 'components/x-tag-core/src/core',
-        wcp: 'components/x-tag-core/lib/web-components-polyfill',
-        mocha: 'components/mocha/mocha',
-        chai: 'components/chai/chai'
+        chai: 'node_modules/chai/chai'
     },
     shim: {
         polymer: { exports: 'Polymer' },
         xtag: { exports: 'xtag' },
-        mocha: { exports: 'mocha' },
         chai: { exports: 'chai' }
     },
     config: {
@@ -29,5 +26,5 @@ requirejs.config({
     },
     deps: tests,
     callback: window.__karma__.start,
-    urlArgs: "v="+(new Date()).getTime()
+    //urlArgs: "v="+(new Date()).getTime()
 });

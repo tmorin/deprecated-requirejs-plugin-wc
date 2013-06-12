@@ -171,7 +171,7 @@ define(['module'], function (module) {
 
                 onLoad(tags.length > 1 ? tags : tags[0]);
             }, function (err) {
-                onLoad.error(new Error('unable to load the module [' + module + ']', err));
+                onLoad.error(new Error('unable to load the module [' + moduleName + ']', err));
             });
         } else {
             onLoad.error(new Error('polymerModule and/or platformModule not configured'));
@@ -353,7 +353,7 @@ define(['module'], function (module) {
                 isDec = decRegEx.test(name);
 
             if (isDebugEnabled(config)) {
-                console.log('wc', 'will load', arguments);
+                console.log('wc', 'will load', name);
                 console.log('wc', 'isImp', isImp, 'isDec', isDec);
             }
 

@@ -1,8 +1,6 @@
 define([
-    'mocha',
     'chai'
 ], function (
-    mocha,
     chai
 ) {
     "use strict";
@@ -13,7 +11,7 @@ define([
 
     divImp.hidden = true;
     divDec.hidden = true;
-
+    
     describe("Given a configuration based on requirejs", function () {
 
         beforeEach(function () {
@@ -24,7 +22,7 @@ define([
         describe("Load using the imperative way", function () {
 
             it("Load std-js1.js", function (done) {
-                require(['wc!tags/std-js1!imp',], function (Tag) {
+                require(['wc!test/tags/std-js1!imp',], function (Tag) {
                     var tagInnerHtml = 'I\'m std-js1!',
                         tagName = 'std-js1';
 
@@ -45,7 +43,7 @@ define([
             });
 
             it("Load poly-js1.js", function (done) {
-                require(['wc!tags/poly-js1!imp!polymer',], function (Tag) {
+                require(['wc!test/tags/poly-js1!imp!polymer',], function (Tag) {
                     var tagInnerHtml = 'I\'m poly-js1!',
                         tagName = 'poly-js1';
 
@@ -66,7 +64,7 @@ define([
             });
 
             it("Load xtag-js1.js", function (done) {
-                require(['wc!tags/xtag-js1!imp!xtag',], function (Tag) {
+                require(['wc!test/tags/xtag-js1!imp!xtag',], function (Tag) {
                     var tagInnerHtml = 'I\'m xtag-js1!',
                         tagName = 'xtag-js1';
 
@@ -91,7 +89,7 @@ define([
         describe("Load using the declarative way", function () {
 
             it("Load std-hml1.html", function (done) {
-                require(['wc!tags/std-html1.html!dec',], function (Tag) {
+                require(['wc!test/tags/std-html1.html!dec',], function (Tag) {
                     var tagInnerHtml = 'I\'m std-js1!',
                         tagName = 'std-js1';
 
