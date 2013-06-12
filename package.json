@@ -8,9 +8,9 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-jslint": "~0.2.6",
     "grunt-contrib-requirejs": "~0.4.1",
-    "karma": "~0.8.5",
-    "karma-mocha": "~0.0.1",
-    "karma-crbot-reporter": "~0.0.3",
-    "grunt-karma": "~0.4.4"
+    "karma-mocha": "*",
+    "karma-script-launcher": "*",
+    "karma-crbot-reporter": "*"
+    "grunt-karma-0.9.1": "~0.4.3",
   }
 }

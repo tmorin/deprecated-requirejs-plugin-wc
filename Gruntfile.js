@@ -77,6 +77,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-jslint');
-    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-karma-0.9.1');
 
 };
