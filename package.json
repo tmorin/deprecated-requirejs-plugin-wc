@@ -10,7 +10,7 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "karma-mocha": "*",
     "karma-script-launcher": "*",
-    "karma-crbot-reporter": "*"
-    "grunt-karma-0.9.1": "~0.4.3",
+    "karma-crbot-reporter": "*",
+    "grunt-karma-0.9.1": "~0.4.3"
   }
 }
