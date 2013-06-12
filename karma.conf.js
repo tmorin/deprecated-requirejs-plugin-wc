@@ -5,6 +5,9 @@
 // For all available config options and default values, see:
 // https://github.com/karma-runner/karma/blob/stable/lib/config.js#L54
 
+// process.env.IP
+// process.env.PORT
+console.log(process.env.IP, process.env.PORT);
 
 // base path, that will be used to resolve files and exclude
 basePath = './';
@@ -26,7 +29,7 @@ reporters = ['progress'];
 
 // web server port
 // CLI --port 9876
-port = 9876;
+port = process.env.PORT || 9876;
 
 // cli runner port
 // CLI --runner-port 9100
