@@ -35,7 +35,11 @@ require([
 ) {
     "use strict";
 
-    mocha.setup('bdd');
+    mocha.setup({
+        ui: 'bdd',
+        slow: 1000,
+        timeout: 30000
+    });
 
     // mocha css
     var mochaCss = document.createElement('link');
@@ -52,14 +56,7 @@ require([
         './imp.std.test'
     ], function () {
 
-        describe("a test group", function () {
-            it("something should that", function () {
-                var somthing = "that";
-                chai.assert.equal(somthing, 'that');
-            });
-        });
-
-        mocha.checkLeaks();
+        //mocha.checkLeaks();
         //mocha.bail(false);
         mocha.run();
     });
