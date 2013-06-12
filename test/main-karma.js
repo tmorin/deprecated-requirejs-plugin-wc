@@ -21,7 +21,7 @@ requirejs.config({
     },
     config: {
         ws: {
-            standardModule: 'wcp',
+            standardModule: 'polymer',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
             debug: true
@@ -30,40 +30,4 @@ requirejs.config({
     deps: tests,
     callback: window.__karma__.start,
     urlArgs: "v="+(new Date()).getTime()
-});
-
-require([
-    'mocha',
-    'chai'
-], function (
-    mocha,
-    chai
-) {
-    "use strict";
-
-    mocha.setup({
-        ui: 'bdd',
-        slow: 1000,
-        timeout: 30000
-    });
-
-    // mocha css
-    var mochaCss = document.createElement('link');
-    mochaCss.rel = 'stylesheet';
-    mochaCss.href = '../components/mocha/mocha.css';
-    document.head.appendChild(mochaCss);
-
-    // mocha div
-    var mochaDiv = document.createElement('div');
-    mochaDiv.id = 'mocha';
-    document.body.appendChild(mochaDiv);
-
-    require([
-        './imp.std.test'
-    ], function () {
-
-        //mocha.checkLeaks();
-        //mocha.bail(false);
-        mocha.run();
-    });
 });

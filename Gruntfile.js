@@ -14,8 +14,7 @@ module.exports = function (grunt) {
 
         karma: {
             options: {
-                configFile: 'karma.conf.js',
-                keepalive: true
+                configFile: 'karma.conf.js'
             },
         },
 
