@@ -25,19 +25,21 @@ files = [
 
 // list of files to exclude
 exclude = [
-  
+
 ];
 
 // test results reporter to use
 // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-reporters: ['growl'];
+reporters: ['progress'];
+
+hostname = process.env.IP || 'localhost';
 
 // web server port
-port = 9876;
+port = process.env.PORT || 9876;
 
 
 // cli runner port
-runnerPort = 9100;
+runnerPort = process.env.PORT ? 0 : 9100;
 
 
 // enable / disable colors in the output (reporters and logs)
@@ -61,7 +63,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Firefox'];
+browsers = ['PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it
@@ -78,5 +80,6 @@ plugins = [
   'karma-mocha',
   'karma-requirejs',
   'karma-firefox-launcher',
+  'karma-chrome-launcher',
   'karma-phantomjs-launcher'
 ];

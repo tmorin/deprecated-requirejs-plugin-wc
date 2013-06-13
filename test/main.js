@@ -1,34 +1,28 @@
-var tests = Object.keys(window.__karma__.files).filter(function (file) {
-      return /Spec\.js$/.test(file);
-});
 
 requirejs.config({
-    baseUrl: '/base',
+    baseUrl: '../',
     paths: {
         text: 'components/requirejs-text/text',
         wc: 'wc',
         polymer: 'components/polymer/polymer.min',
         xtag: 'components/x-tag-core/src/core',
-        wcp: 'components/x-tag-core/lib/web-components-polyfill',
-        mocha: 'components/mocha/mocha',
-        chai: 'components/chai/chai'
+        mocha: 'node_modules/mocha/mocha',
+        chai: 'node_modules/chai/chai'
     },
     shim: {
         polymer: { exports: 'Polymer' },
         xtag: { exports: 'xtag' },
-        mocha: { exports: 'mocha' },
-        chai: { exports: 'chai' }
+        chai: { exports: 'chai' },
+        mocha: { exports: 'mocha' }
     },
     config: {
         ws: {
-            standardModule: 'wcp',
+            standardModule: 'polymer',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
             debug: true
         }
     },
-    deps: tests,
-    callback: window.__karma__.start,
     urlArgs: "v="+(new Date()).getTime()
 });
 
@@ -59,7 +53,8 @@ require([
     document.body.appendChild(mochaDiv);
 
     require([
-        './imp.std.test'
+        'test/dec.poly.spec',
+        'test/dec.std.spec'
     ], function () {
 
         //mocha.checkLeaks();

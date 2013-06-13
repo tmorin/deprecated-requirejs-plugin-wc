@@ -2,11 +2,9 @@
     <section>I'm std-html1!</section>
     <footer>nothing to see here</footer>
     <script>
-            console.log('outside', this);
         // When <element> is in document, might run in wrong context.
         // Only do work when this == <element>.
         if (this !== window) {
-            console.log('inside', this);
             var section = this.querySelector('section');
             this.register({
                 prototype: {

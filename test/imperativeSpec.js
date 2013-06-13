@@ -11,7 +11,7 @@ define([
 
     divImp.hidden = true;
     divDec.hidden = true;
-    
+
     describe("Given a configuration based on requirejs", function () {
 
         beforeEach(function () {
@@ -90,8 +90,8 @@ define([
 
             it("Load std-hml1.html", function (done) {
                 require(['wc!test/tags/std-html1.html!dec',], function (Tag) {
-                    var tagInnerHtml = 'I\'m std-js1!',
-                        tagName = 'std-js1';
+                    var tagInnerHtml = 'I\'m std-html1!',
+                        tagName = 'std-html1';
 
                     expect(Tag).to.be.not.null;
 
