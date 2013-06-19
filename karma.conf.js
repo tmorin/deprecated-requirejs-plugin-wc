@@ -9,15 +9,18 @@ basePath = './';
 // frameworks to use
 frameworks = ['mocha', 'requirejs'];
 
-
 // list of files / patterns to load in the browser
 files = [
-    {pattern: 'components/polymer/polymer.min.js', included: false},
+    MOCHA,
+    MOCHA_ADAPTER,
+    REQUIRE,
+    REQUIRE_ADAPTER,
     {pattern: 'components/requirejs-text/text.js', included: false},
     {pattern: 'components/x-tag-core/src/core.js', included: false},
-    {pattern: 'node_modules/chai/chai.js', included: false},
+    {pattern: 'components/polymer/polymer.min.js', included: false},
+    {pattern: 'components/chai/chai.js', included: false},
     {pattern: 'wc.js', included: false},
-    {pattern: 'test/**/*Spec.js', included: false},
+    {pattern: 'test/**/*.spec.js', included: false},
     {pattern: 'test/tags/*', included: false},
     'test/main-karma.js'
 ];
@@ -31,6 +34,11 @@ exclude = [
 // test results reporter to use
 // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
 reporters: ['progress'];
+
+junitReporter = {
+  outputFile: 'test_out/unit.xml',
+  suite: 'unit'
+};
 
 hostname = process.env.IP || 'localhost';
 
@@ -52,7 +60,7 @@ logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = true;
+autoWatch = false;
 
 
 // Start these browsers, currently available:
@@ -67,7 +75,7 @@ browsers = ['PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 60000;
+captureTimeout = 1000 * 5;
 
 
 // Continuous Integration mode
@@ -79,7 +87,5 @@ singleRun = false;
 plugins = [
   'karma-mocha',
   'karma-requirejs',
-  'karma-firefox-launcher',
-  'karma-chrome-launcher',
   'karma-phantomjs-launcher'
 ];

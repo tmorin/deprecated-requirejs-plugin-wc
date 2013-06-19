@@ -1,6 +1,6 @@
 var tests = [];
 for (var file in window.__karma__.files) {
-    if (/Spec\.js$/.test(file)) {
+    if (/spec\.js$/.test(file)) {
         tests.push(file);
     }
 }
@@ -12,11 +12,11 @@ requirejs.config({
         wc: 'wc',
         polymer: 'components/polymer/polymer.min',
         xtag: 'components/x-tag-core/src/core',
-        chai: 'node_modules/chai/chai'
+        chai: 'components/chai/chai'
     },
     shim: {
         polymer: { exports: 'Polymer' },
-        xtag: { exports: 'xtag' },
+        xtag: { exports: 'xtag', deps: ['polymer'] },
         chai: { exports: 'chai' }
     },
     config: {
@@ -24,10 +24,10 @@ requirejs.config({
             standardModule: 'polymer',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
-            debug: true
+            debug: false
         }
     },
     deps: tests,
     callback: window.__karma__.start,
-    //urlArgs: "v="+(new Date()).getTime()
+    urlArgs: "v="+(new Date()).getTime()
 });

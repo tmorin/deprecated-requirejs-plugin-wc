@@ -10,7 +10,7 @@ requirejs.config({
     },
     shim: {
         polymer: { exports: 'Polymer' },
-        xtag: { exports: 'xtag' },
+        xtag: { exports: 'xtag', deps: ['polymer'] },
         chai: { exports: 'chai' },
         mocha: { exports: 'mocha' }
     },

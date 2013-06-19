@@ -261,7 +261,7 @@ define(['module'], function (module) {
                         onLoad.error(new Error('no document.register'));
                     }
                 }, function (err) {
-                    onLoad.error(new Error('unable to load the standard platform module', err));
+                    onLoad.error(new Error('unable to load the module [' + standardModule + ']', err));
                 });
             } else {
                 onLoad.error(new Error('standardModule not configured'));
@@ -290,7 +290,7 @@ define(['module'], function (module) {
                 tag = xtag.register(tagName, wcPrototype);
                 onLoad(tag);
             }, function (err) {
-                onLoad.error(new Error('unable to load the xtag module', err));
+                onLoad.error(new Error('unable to load the module [' + xTagModule + ']', err));
             });
         } else {
             onLoad.error(new Error('xTagModule not configured'));
