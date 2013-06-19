@@ -54,7 +54,6 @@ require([
     require([
         'test/dec.poly.spec',
         'test/dec.std.spec',
-        'test/imp.poly.spec',
         'test/imp.std.spec',
         'test/imp.xtag.spec'
     ], function () {
