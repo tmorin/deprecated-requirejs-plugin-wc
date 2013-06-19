@@ -31,12 +31,13 @@ To specify the way to load, theris some options to append to the module URL:
 *   !imp: the custom elements is described using an imperative way
 *   !polymer: the Polymer's features will be used
 *   !xtag: the xtags' features will be used
+*   !std: the standard's (i.e. platform's Polymer) features will be used
 
 Where:
 *   !dec and !imp are exclusive
-*   !polymer and !xtag are exclusive
-*   !polymer and !xtag are optional
-*   if !polymer and !xtag are missing, consider its standard
+*   !polymer and !xtag and !std are exclusive
+*   !polymer and !xtag and !std are optional
+*   if !polymer and !xtag and !std are missing, consider its standard (!std)
 
 When the declarative way is used, the module can contain "import" elements. The plugin will load theses
 

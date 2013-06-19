@@ -6,6 +6,7 @@ define(['module'], function (module) {
         decRegEx = /!dec/,
         polymerRegEx = /!polymer/,
         xtagRegEx = /!xtag/,
+        stdRegEx = /!std/,
         masterConfig = (module.config && module.config()) || {};
 
 
@@ -123,17 +124,21 @@ define(['module'], function (module) {
     function registerHTMLElements(name, parentRequire, onLoad, config, elementNodes) {
         var moduleName,
             isPolymer = polymerRegEx.test(name),
+            isStd = stdRegEx.test(name),
             currentPlatform = getCurrentPlatform(name, config);
 
         if (isDebugEnabled(config)) {
             console.log('wc', 'registerHTMLElements', 'currentPlatform', currentPlatform);
         }
 
-        if (isPolymer || currentPlatform === 'polymer') {
+        if (isPolymer) {
             moduleName = getPolymerModule(config);
+        } else if (isStd) {
+            moduleName = getStandardModule(config);
         } else if (currentPlatform === 'polymer') {
             moduleName = getPolymerModule(config);
         } else {
+            // TODO: handle the default platform
             moduleName = getStandardModule(config);
         }
 
@@ -314,6 +319,7 @@ define(['module'], function (module) {
      */
     function loadImp(name, parentRequire, onLoad, config) {
         var moduleName = formatModuleName(name),
+            isStd = stdRegEx.test(name),
             isXTag = xtagRegEx.test(name);
 
         if (isDebugEnabled(config)) {
@@ -324,7 +330,10 @@ define(['module'], function (module) {
             var tagName = getElementNameFromResourceUrl(moduleName);
             if (isXTag) {
                 registerXTagComponent(tagName, wcPrototype, parentRequire, onLoad, config);
+            } else if (isStd) {
+                registerStdComponent(tagName, wcPrototype, parentRequire, onLoad, config);
             } else {
+                // TODO: handle the default platform
                 registerStdComponent(tagName, wcPrototype, parentRequire, onLoad, config);
             }
         }, function (err) {
