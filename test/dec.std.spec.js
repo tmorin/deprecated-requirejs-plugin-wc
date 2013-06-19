@@ -9,17 +9,15 @@ define([
         divImp = document.createElement('div'),
         divDec = document.createElement('div');
 
-    divImp.hidden = true;
-    divDec.hidden = true;
-
     describe("Load declarative standard web components", function () {
 
-        beforeEach(function () {
+        afterEach(function () {
             divImp.innerHTML = '';
             divDec.innerHTML = '';
+            document.body.style.opacity = 1;
         });
 
-        it("Load std-hml1.html!dec", function (done) {
+        it("Load std-html1.html!dec", function (done) {
             var tagName = 'std-html1',
                 tagInnerHtml = 'I\'m ' + tagName + '!';
 
@@ -27,10 +25,10 @@ define([
 
                 expect(!!Tag).to.be.false;
 
-                var tagDev = document.createElement(tagName);
-                divImp.appendChild(tagDev);
+                var tagDec = document.createElement(tagName);
+                divImp.appendChild(tagDec);
                 document.body.appendChild(divImp);
-                expect(tagDev.innerHTML).to.equal(tagInnerHtml);
+                expect(tagDec.innerHTML).to.equal(tagInnerHtml);
 
                 done();
             });

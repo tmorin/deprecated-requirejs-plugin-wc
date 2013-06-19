@@ -1,4 +1,3 @@
-
 requirejs.config({
     baseUrl: '../',
     paths: {
@@ -20,7 +19,7 @@ requirejs.config({
             standardModule: 'polymer',
             xTagModule: 'xtag',
             polymerModule: 'polymer',
-            debug: true
+            debug: false
         }
     },
     urlArgs: "v="+(new Date()).getTime()
@@ -54,7 +53,10 @@ require([
 
     require([
         'test/dec.poly.spec',
-        'test/dec.std.spec'
+        'test/dec.std.spec',
+        'test/imp.poly.spec',
+        'test/imp.std.spec',
+        'test/imp.xtag.spec'
     ], function () {
 
         //mocha.checkLeaks();

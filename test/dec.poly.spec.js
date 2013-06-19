@@ -9,20 +9,19 @@ define([
         divImp = document.createElement('div'),
         divDec = document.createElement('div');
 
-    //divImp.hidden = true;
-    //divDec.hidden = true;
-
     describe("Load declarative Polymer's web components", function () {
 
-        beforeEach(function () {
+        afterEach(function () {
             divImp.innerHTML = '';
             divDec.innerHTML = '';
+            document.body.style.opacity = 1;
         });
 
-        it("Load poly-hml1.html!dec!poly", function (done) {
+        it("Load poly-hml1.html!dec!polymer", function (done) {
             var tagName = 'poly-html1';
 
-            require(['wc!test/tags/' + tagName + '.html!dec!poly',], function (Tag) {
+            require(['wc!test/tags/' + tagName + '.html!dec!polymer',], function (Tag) {
+
                 var tagInnerHtml = 'I\'m ' + tagName + '!';
 
                 expect(Tag).to.be.not.null;
@@ -31,12 +30,12 @@ define([
                 divImp.appendChild(tagImp);
                 document.body.appendChild(divImp);
                 console.log(tagImp);
-                expect(tagImp.innerHTML).to.equal(tagInnerHtml);
+                expect(tagImp.att1).to.equal('value1');
 
-                var tagDev = document.createElement(tagName);
-                divImp.appendChild(tagDev);
-                document.body.appendChild(divImp);
-                expect(tagDev.innerHTML).to.equal(tagInnerHtml);
+                var tagDec = document.createElement(tagName);
+                divDec.appendChild(tagDec);
+                document.body.appendChild(divDec);
+                expect(tagDec.att1).to.equal('value1');
 
                 done();
             });

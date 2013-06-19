@@ -123,21 +123,15 @@ define(['module'], function (module) {
     function registerHTMLElements(name, parentRequire, onLoad, config, elementNodes) {
         var moduleName,
             isPolymer = polymerRegEx.test(name),
-            isXTag = xtagRegEx.test(name),
             currentPlatform = getCurrentPlatform(name, config);
 
         if (isDebugEnabled(config)) {
             console.log('wc', 'registerHTMLElements', 'currentPlatform', currentPlatform);
         }
 
-        if (isPolymer) {
+        if (isPolymer || currentPlatform === 'polymer') {
             moduleName = getPolymerModule(config);
-        } else if (isXTag) {
-            // xtag doesn't provide support for the declarative way
-            moduleName = getStandardModule(config);
         } else if (currentPlatform === 'polymer') {
-            // the given name doesn't contain platform option,
-            // so we test if the default one is the polymer platform
             moduleName = getPolymerModule(config);
         } else {
             moduleName = getStandardModule(config);
@@ -320,20 +314,15 @@ define(['module'], function (module) {
      */
     function loadImp(name, parentRequire, onLoad, config) {
         var moduleName = formatModuleName(name),
-            isPolymer = polymerRegEx.test(name),
             isXTag = xtagRegEx.test(name);
 
         if (isDebugEnabled(config)) {
-            console.log('wc', 'isPolymer', isPolymer, 'isXTag', isXTag);
-            console.log('Polymer', !!window.Polymer, 'xtag', !!window.xtag);
+            console.log('wc', 'isXTag', isXTag, 'xtag', !!window.xtag);
         }
 
         parentRequire([moduleName], function (wcPrototype) {
             var tagName = getElementNameFromResourceUrl(moduleName);
-            if (isPolymer) {
-                // polymer doesn't provide support for the imperative way
-                registerStdComponent(tagName, wcPrototype, parentRequire, onLoad, config);
-            } else if (isXTag) {
+            if (isXTag) {
                 registerXTagComponent(tagName, wcPrototype, parentRequire, onLoad, config);
             } else {
                 registerStdComponent(tagName, wcPrototype, parentRequire, onLoad, config);
