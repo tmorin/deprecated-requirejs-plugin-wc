@@ -11,13 +11,13 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-jslint": "~0.2.6",
     "grunt-contrib-requirejs": "~0.4.1",
-    "karma": "~0.9",
-    "karma-mocha": "*",
-    "karma-requirejs": "*",
-    "karma-junit-reporter": "*",
-    "karma-phantomjs-reporter": "*",
+    "karma": "0.9",
+    "karma-mocha": "0.0.1",
+    "karma-requirejs": "0.0.1",
+    "karma-junit-reporter": "0.0.1",
+    "karma-phantomjs-launcher": "0.0.2",
+    "karma-firefox-reporter": "0.0.2",
     "chai": "~1.6.1",
-    "mocha": "~1.11.0",
-    "karma-phantomjs-launcher": "0.0.2"
+    "mocha": "~1.11.0"
   }
 }
