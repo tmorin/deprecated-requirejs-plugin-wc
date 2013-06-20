@@ -28,6 +28,5 @@ requirejs.config({
         }
     },
     deps: tests,
-    callback: window.__karma__.start,
-    urlArgs: "v="+(new Date()).getTime()
+    callback: window.__karma__.start
 });
