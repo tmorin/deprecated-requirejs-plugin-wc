@@ -16,7 +16,7 @@
     "karma-requirejs": "0.0.1",
     "karma-junit-reporter": "0.0.1",
     "karma-phantomjs-launcher": "0.0.2",
-    "karma-firefox-reporter": "0.0.2",
+    "karma-firefox-launcher": "0.0.2",
     "chai": "~1.6.1",
     "mocha": "~1.11.0"
   }
