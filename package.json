@@ -1,8 +1,8 @@
 {
     "name": "requirejs-plugin-wc",
     "description": "Web components loading support for requirejs",
-    "version": "0.0.1",
-        "scripts": {
+    "version": "0.0.2,
+    "scripts": {
         "test": "./node_modules/.bin/karma start --single-run --browsers Firefox"
     },
     "devDependencies": {

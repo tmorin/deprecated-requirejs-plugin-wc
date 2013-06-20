@@ -1,6 +1,6 @@
 {
     "name": "requirejs-plugin-wc",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": ["wc.js", "wc.min.js"],
     "ignore": [
         ".travis.yml"
