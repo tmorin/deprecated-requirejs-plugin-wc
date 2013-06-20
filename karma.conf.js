@@ -22,7 +22,7 @@ module.exports = function (karma) {
             pattern: 'components/polymer/polymer.min.js',
             included: false
         }, {
-            pattern: 'node_modules/chai/chai.js',
+            pattern: 'components/chai/chai.js',
             included: false
         }, {
             pattern: 'wc.js',

@@ -9,6 +9,8 @@
   },
   "devDependencies": {
     "polymer": "stable",
-    "x-tag-core": "latest"
+    "x-tag-core": "latest",
+    "chai": "~1.6.1",
+    "mocha": "~1.11.0"
   }
 }

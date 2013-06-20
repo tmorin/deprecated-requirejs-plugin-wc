@@ -12,7 +12,7 @@ requirejs.config({
         wc: 'wc',
         polymer: 'components/polymer/polymer.min',
         xtag: 'components/x-tag-core/src/core',
-        chai: 'node_modules/chai/chai'
+        chai: 'components/chai/chai'
     },
     shim: {
         polymer: { exports: 'Polymer' },
