@@ -143,7 +143,7 @@ define(['module'], function (module) {
         }
 
         if (moduleName) {
-            parentRequire([moduleName], function (mod) {
+            parentRequire([moduleName], function () {
                 // TODO: if loaded for the first time, be sure it's loaded completely
 
                 var tags = Array.prototype.map.call(elementNodes, function (node) {
@@ -261,7 +261,9 @@ define(['module'], function (module) {
                         onLoad.error(new Error('no document.register'));
                     }
                 }, function (err) {
-                    onLoad.error(new Error('unable to load the module [' + standardModule + ']', err));
+                    onLoad.error(new Error('unable to load the module ['
+                        + standardModule
+                        + ']', err));
                 });
             } else {
                 onLoad.error(new Error('standardModule not configured'));
