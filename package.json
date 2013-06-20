@@ -13,7 +13,7 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "karma": "~0.8",
     "karma-mocha": "*",
-    "karma-requirejs": "*"
+    "karma-requirejs": "*",
     "chai": "~1.6.1",
     "mocha": "~1.11.0"
   }
