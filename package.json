@@ -3,7 +3,7 @@
   "description": "Web components loading support for requirejs",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox"
+    "test": "./node_modules/.bin/karma start --single-run --browsers Chrome"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -16,6 +16,7 @@
     "karma-requirejs": "0.0.1",
     "karma-junit-reporter": "0.0.1",
     "karma-firefox-launcher": "0.0.2",
-    "karma-phantomjs-launcher": "0.0.2"
+    "karma-phantomjs-launcher": "0.0.2",
+    "karma-chrome-launcher": "0.0.1"
   }
 }
