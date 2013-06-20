@@ -93,7 +93,7 @@ module.exports = function (karma) {
 
 
         // plugins to load
-        plugins: ['karma-junit-reporter', 'karma-mocha', 'karma-requirejs', 'karma-phantomjs-launcher']
+        plugins: ['karma-junit-reporter', 'karma-mocha', 'karma-requirejs', 'karma-firefox-launcher']
 
     });
 };
