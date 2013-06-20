@@ -1,16 +1,18 @@
 {
-  "name": "requirejs-plugin-wc",
-  "version": "0.0.1",
-  "main": "wc.js",
-  "ignore": [],
-  "dependencies": {
-    "requirejs": "~2.1.6",
-    "requirejs-text": "~2.0.7"
-  },
-  "devDependencies": {
-    "polymer": "stable",
-    "x-tag-core": "latest",
-    "chai": "~1.6.1",
-    "mocha": "~1.11.0"
-  }
+    "name": "requirejs-plugin-wc",
+    "version": "0.0.1",
+    "main": ["wc.js", "wc.min.js"],
+    "ignore": [
+        ".travis.yml"
+    ],
+    "dependencies": {
+        "requirejs": "~2.1.6",
+        "requirejs-text": "~2.0.7"
+    },
+    "devDependencies": {
+        "polymer": "stable",
+        "x-tag-core": "latest",
+        "chai": "~1.6.1",
+        "mocha": "~1.11.0"
+    }
 }
