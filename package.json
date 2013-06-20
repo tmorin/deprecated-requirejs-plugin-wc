@@ -3,7 +3,7 @@
   "description": "Web components loading support for requirejs",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -11,10 +11,13 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-jslint": "~0.2.6",
     "grunt-contrib-requirejs": "~0.4.1",
-    "karma": "~0.8",
+    "karma": "~0.9",
     "karma-mocha": "*",
     "karma-requirejs": "*",
+    "karma-junit-reporter": "*",
+    "karma-phantomjs-reporter": "*",
     "chai": "~1.6.1",
-    "mocha": "~1.11.0"
+    "mocha": "~1.11.0",
+    "karma-phantomjs-launcher": "0.0.2"
   }
 }
